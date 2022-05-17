@@ -18,9 +18,10 @@ public class CameraController : MonoBehaviour
     {
         float horizontallook = Input.GetAxis("Mouse X");
         float verticallook = Input.GetAxis("Mouse Y");
-        cam.transform.position = player.transform.position + offset;
-        cam.rotation = Quaternion.Euler(verticallook, horizontallook, 0);
+        ////cam.transform.position = player.transform.position + offset;
+        //cam.rotation = Quaternion.Euler(verticallook, horizontallook, 0);
         player.Rotate(Vector3.up * horizontallook);
-        //cam.transform.position = player.transform.position + offset+player.transform.rotation*Vector3.back;
+        Vector3 dirOffset = player.transform.TransformDirection(offset);
+        cam.transform.position = player.transform.position + dirOffset;
     }
 }
